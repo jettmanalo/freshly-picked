@@ -21,10 +21,9 @@ const Navbar = () => {
       >
         <img
           className="h-9 me-2"
-          src={assets.favicon}
+          src={assets.logo}
           alt="FreshlyPicked logo"
         />
-        <p className="font-bold">FreshlyPicked</p>
       </NavLink>
 
       {/* Desktop Menu */}

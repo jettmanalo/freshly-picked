@@ -6,7 +6,7 @@ const Footer = () => {
     <div className="px-6 md:px-16 lg:px-24 xl:px-32 mt-24 bg-green/10">
       <div className="flex flex-col md:flex-row items-start justify-between gap-10 py-10 border-b border-gray-500/30 text-gray-500">
         <div>
-          <img className="h-20" src={assets.favicon} alt="dummyLogoColored" />
+          <img className="h-20" src={assets.logo} alt="FreshlyPicked logo" />
 
           <p className="max-w-[410px] mt-6">
             FreshlyPicked is your shortcut to stress-free groceries. We do the
