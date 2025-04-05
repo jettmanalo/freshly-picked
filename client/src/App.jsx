@@ -4,13 +4,14 @@ import { Toaster } from "react-hot-toast";
 
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
+import Footer from "./components/Footer";
 
 const App = () => {
   const isSellerPath = useLocation().pathname.includes("seller");
 
   return (
     <div>
-      {isSellerPath ? null : <Navbar />}
+      {!isSellerPath && <Navbar />}
 
       <Toaster />
 
@@ -21,6 +22,8 @@ const App = () => {
           <Route path="/" element={<Home />}></Route>
         </Routes>
       </div>
+
+      {!isSellerPath && <Footer />}
     </div>
   );
 };
