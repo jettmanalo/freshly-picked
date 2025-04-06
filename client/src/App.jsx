@@ -10,6 +10,7 @@ import Login from "./components/Login";
 import Products from "./pages/Products";
 import ProductCategory from "./pages/ProductCategory";
 import ProductDetails from "./pages/ProductDetails";
+import Cart from "./pages/Cart";
 
 const App = () => {
   const isSellerPath = useLocation().pathname.includes("seller");
@@ -30,6 +31,7 @@ const App = () => {
           <Route path="/products" element={<Products />}></Route>
           <Route path="/products/:category" element={<ProductCategory />}></Route>
           <Route path="/products/:category/:id" element={<ProductDetails />}></Route>
+          <Route path="/cart" element={<Cart />}></Route>
         </Routes>
       </div>
 
