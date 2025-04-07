@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Environment
+.env
+.env.*
+
+# Build/output
+dist/
+
+# Database dumps (optional)
+dump/
+data/
+
+# Misc
+*.swp
+*.swo
