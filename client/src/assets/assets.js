@@ -792,7 +792,7 @@ export const dummyAddress = [
     street: "Street 123",
     city: "Main City",
     state: "New State",
-    zipcode: 123456,
+    zipCode: 123456,
     country: "IN",
     phone: "1234567890",
   },

@@ -1,12 +1,11 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { dummyProducts } from "../assets/assets";
 import toast from "react-hot-toast";
 import axios from "axios";
 
 axios.defaults.withCredentials = true;
 axios.defaults.baseURL = import.meta.env.VITE_BACKEND_URL;
-
-import { dummyProducts } from "../assets/assets";
 
 export const AppContext = createContext();
 
@@ -16,13 +15,15 @@ export const AppContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isSeller, setIsSeller] = useState(false);
   const [showUserLogin, setShowUserLogin] = useState(false);
-  const [products, setproducts] = useState([]);
+  const [products, setProducts] = useState([]);
   const [cartItems, setCartItems] = useState([]);
   const [searchQuery, setSearchQuery] = useState([]);
 
   const fetchSeller = async () => {
     try {
-      const { data } = await axios.get("/api/seller/is-auth");
+      const { data } = await axios.get(
+        "http://localhost:4000/api/seller/is-auth"
+      );
       if (data.success) {
         setIsSeller(true);
       } else {
@@ -34,7 +35,18 @@ export const AppContextProvider = ({ children }) => {
   };
 
   const fetchProducts = async () => {
-    setproducts(dummyProducts);
+    try {
+      const { data } = await axios.get(
+        "http://localhost:4000/api/product/list"
+      );
+      if (data.success) {
+        setProducts(data.products);
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
 
   const addToCart = (itemId) => {
@@ -72,7 +84,7 @@ export const AppContextProvider = ({ children }) => {
   useEffect(() => {
     fetchSeller();
     fetchProducts();
-  });
+  }, []);
 
   const updateCartItems = (itemId, qty) => {
     let cartData = structuredClone(cartItems);
@@ -112,6 +124,7 @@ export const AppContextProvider = ({ children }) => {
     getCartAmount,
     getCartCount,
     axios,
+    fetchProducts,
   };
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };
