@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { assets } from "../assets/assets";
 import { useAppContext } from "../context/AppContext";
+import toast from "react-hot-toast";
 
 const InputField = ({ type, placeholder, name, handleChange, address }) => (
   <input
@@ -90,7 +91,7 @@ const AddAddress = () => {
               handleChange={handleChange}
               address={address}
               type="email"
-              name="emailAddress"
+              name="email"
               placeholder="Email Address"
             />
             <InputField
@@ -139,7 +140,7 @@ const AddAddress = () => {
               handleChange={handleChange}
               address={address}
               type="text"
-              name="phoneNumber"
+              name="phone"
               placeholder="Phone Number"
             />
 
